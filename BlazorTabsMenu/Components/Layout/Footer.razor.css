@@ -1,0 +1,22 @@
+﻿/*
+    Style for footer
+  */
+.page-footer {
+    display: flex;
+    max-width: 1080px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--page_table-border-color);
+    background-color: var(--page-background);
+    margin : 0 auto;
+}
+    .page-footer p {
+        margin: .5em;
+        padding: .5em;
+        text-align: center;
+        width: 100%;        
+        font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+        line-height: 14px;
+    }

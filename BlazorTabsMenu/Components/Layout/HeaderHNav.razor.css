@@ -1,0 +1,24 @@
+﻿
+/*  The top image for the country with a link to the home page */
+.topheader {
+    display: flex;
+}
+
+.topimage {
+    max-width: 1080px;
+    height: auto;
+}
+
+    .topimage a img {
+        width: 100%;
+        height: auto;
+    }
+
+    .topimage div {
+        width: 1080px;
+        background-color: var(--page-background);
+        border: initial;
+        box-sizing: border-box;
+        line-height: 26px;
+    }
+/* end top image */

@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+<div id="MainLayout" class="app-layout-page">
+
+    <HeaderHNav />
+    <div id="main-content">
+
+        <div align="center" class="page">
+
+            <article class="content">
+                @Body
+            </article>
+        </div>
+    </div>
+    <Footer />
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

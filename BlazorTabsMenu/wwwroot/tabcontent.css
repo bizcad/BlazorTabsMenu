@@ -1,0 +1,76 @@
+﻿/* Tab Content - menucool.com */
+
+ul.tabs
+{
+    padding: 8px 0 3px;
+    font-size: 0;
+    background-color: var(--page-background);
+    margin-left: 5px;
+    margin-right: 5px;
+    list-style-type: none;
+    text-align: left; /*set to left, center, or right to align the tabs as desired*/
+    vertical-align: bottom;
+}
+        
+ul.tabs li
+{
+    display: inline;
+    margin: 0px;
+	/*or 148px */
+    /*margin-right: 1px; /*distance between tabs*/
+}
+        
+ul.tabs li a
+{
+	min-width: 148px;
+    font: normal 700 14px/16px "Roboto conndensed";
+    text-decoration: none;
+   /* position: relative;*/
+    padding: 7px;
+    border: 2px solid var(--btns-background, red);
+	border-radius: 0px 25px 0px 0px;
+    border-bottom-color: var(--btns-background);
+    color: rgba(0,51,51,1.0);
+	text-align: center;
+    /* outline: solid 2px #009898; */
+	outline-offset: -1px;
+    background-color: var(--page-background);
+}
+        
+ul.tabs li a:visited
+{
+    color: rgba(0,51,51,0.75);
+}
+
+    ul.tabs li a:hover {
+        /*border: 2px dotted --wrapper-tab1-border;*/
+        background-color: var(--tab-hover-background);
+        /*    background:#F0F0F0 url(tabbg.gif) 0 -36px repeat-x; */
+    }
+
+    ul.tabs li.selected a, ul.tabs li.selected a:hover {
+        /*position: relative;*/
+        top: 0px;
+        font: normal 700 14px/16px "Roboto condensed";
+        background-color: var(--tab-hover-background);
+        border: 2px solid var(--btns-background);
+        border-radius: 0px 25px 0px 0px;
+        color: white;
+        /* border-bottom-color: white;*/
+    }
+
+
+    ul.tabs li.selected a:hover {
+        text-decoration: none;
+        background-color: var(--tab-hover-background);
+    }
+     
+
+div.tabcontents
+{
+    /*border: 2px solid #a6a6a6; 
+	padding: 7px 10px;*/
+    background-color: transparent;
+   
+}
+

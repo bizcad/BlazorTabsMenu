@@ -1,0 +1,48 @@
+﻿<div class="navh">
+    <div>
+        <NavLink href="/">1. INSTITUTION</NavLink>
+        
+    </div>
+    <div>
+        <NavLink href="/office">2. OFFICE</NavLink>
+        
+        
+    </div>
+    <div>
+        <NavLink href="/disclosure">3. DISCLOSURE</NavLink>
+        
+    </div>
+    <div>
+        <NavLink href="/patents">4. PATENTS</NavLink>
+        
+    </div>
+    <div>
+        <NavLink href="/agreements">5. AGREEMENTS</NavLink>
+        
+    </div>
+    <div>
+        <NavLink href="/income">6. INCOME/FEES</NavLink>
+        
+    </div>
+    <div>
+        <NavLink href="/startups">7. START-UPS/PROD</NavLink>
+        
+    </div>
+</div>
+
+@code {
+    private string activeLink = "active";
+    protected override void OnInitialized()
+    {
+        activeLink = "active";
+    }
+    private bool IsActive(string link)
+    {
+        return activeLink == link;
+    }
+
+    private void SetActive(string link)
+    {
+        activeLink = link;
+    }
+}

@@ -1,0 +1,160 @@
+﻿/*
+    Begin Survey CSS
+*/
+*, ::after, ::before {
+    box-sizing: content-box
+}
+/*setup fonts etc*/
+* {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: Roboto, sans-serif;
+}
+
+.inst_bottom_spacer {
+    margin-bottom: 1em;
+}
+
+.page_table {
+    width: 1080px;
+    margin: 0 auto;
+    align-content: center;
+    background-color: var(--page-background);
+    box-sizing: content-box;
+    display: block;
+    border-top: 2px solid var(--page-background);
+    border-right: 2px solid var(--page_table-border-color);
+    border-left: 2px solid var(--page_table-border-color);
+    border: none;
+    border-color: aquamarine;
+}
+
+.wrapper {
+    display: grid;
+    margin: -2px 5px 20px 5px;
+    padding-top: 1.5em;
+    height: auto;
+    grid-template-columns: .75fr 4fr 1.5fr 2fr;
+    grid-gap: 1em;
+    grid-auto-rows: minmax(15px, auto);
+    justify-items: normal;
+    background-color: var(--wrapper-tab1-background);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+    .wrapper > div {
+        padding: 5px 0px 0px;
+        align-self: start;
+        text-align: left;
+    }
+/*for help text*/
+.div > span {
+    font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+}
+
+/* for question div */
+.question_div {
+    border: 3px inset var(--question_background);
+    border-radius: 7px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: var(--question_background);
+}
+/*question number style*/
+div > .qno {
+    padding-left: 5px;
+    text-align: right;
+}
+/*question institution style*/
+div > .qno-inst {
+    padding-left: 5px;
+    text-align: right;
+    padding-top: 6px;
+}
+
+.question_label {
+    font-weight: 600;
+}
+/*for question text*/
+.question_text {
+    font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+}
+
+
+/*input year header*/
+.yr_over_previous {
+    padding-left: 48px;
+    font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+}
+
+.yr_over_current {
+    padding-left: 48px;
+    font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+}
+/*input year*/
+.input-group {
+    display: table;
+    /* border-collapse: collapse; */
+    border: none;
+    /* width:100%; */
+}
+
+    .input-group > .input-group-prepend {
+        display: table-cell;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: none;
+        vertical-align: middle;
+        background-color: var(--input-group-prepend-background);
+    }
+
+.input-group-area-previous {
+    width: 100%;
+}
+
+.input-group-area-current {
+    width: 100%;
+    padding-right: 55px;
+}
+
+.input-unvisited {
+    /* border: 2px solid var(--page-border); */
+    border-top: 3px solid var(--input-unvisited);
+    border-right: 3px solid var(--input-unvisited);
+    border-bottom: 3px solid var(--input-unvisited);
+    border-left: 3px solid var(--input-unvisited);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 0 15px;
+}
+
+.input-error {
+    border: 2px solid red;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.input-ok {
+    border: 2px solid green;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+div.tabcontents {
+    border: 2px solid #a6a6a6;
+    padding: 7px 10px;
+    display: block;
+    background-color: transparent;
+}

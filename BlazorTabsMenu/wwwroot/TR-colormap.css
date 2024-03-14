@@ -1,0 +1,43 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*styles for header_entryform.html*/
+/*background-image: linear-gradient(to bottom right,#d0e5e2, #b2c8c5, #a6bbb8, #92a6a2, #677e7a, #74918d);*/
+/*color background*/
+
+:root {
+    --text-default: hsla(235,75%,20%,1.00);
+    --main-color: hsla(181,22%,62%,0.40);
+    --border-headers: hsla(235,70%,40%,1.00);
+    --btn-background: hsla(235,80%,30%,1.00);
+    --btn-border: hsla(235,60%,100%,1.00);
+    --page-border: hsla(235,12%,85%,.5);
+    --page-background: hsla(235,12%,85%,0.40);
+    --output-border: hsla(218,42%,30%,1);
+    --wrappers-background: hsla(235,25%,75%,1.00);
+    --column-header-text: #f4ece4;
+    --tab-hover-background: white;
+    /* from nick */
+    --container-border: var(--border-headers);
+    --container-div-background: var(--page-background);
+    --table-background: var(--output-border:);
+    --table-column-header: var(--border-headers);
+    --table-column-header-text: var(--column-header-text);
+    /* From Nola */
+    --wrapper-border: var(--border-headers);
+    --wrapper-tab1-border: var(--border-headers);
+    --inst_wrapper-border: var(--border-headers);
+    --h1-color: var(--border-headers);
+    --h2-color: var(--border-headers);
+    --h3-color: var(--border-headers);
+    --btns-background: var(--btn-background);
+    --btns-border: var(--btn-border);
+    --inst-output-border: var(--output-border);
+    --page_table-background-color: var(--page-background);
+    --page_table-border-color: var(--page-border);
+    --text_global: var(--text-default);
+    --wrapper-background: var(--wrappers-background);
+    --wrapper-flex-background: var(--wrappers-background);
+    --wrapper-tab1-background: var(--wrappers-background);
+    --inst_wrapper-background: var(--wrappers-background);
+    --input-unvisited: var(--output-border);
+}
