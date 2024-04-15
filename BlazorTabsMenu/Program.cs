@@ -1,5 +1,7 @@
 using BlazorTabsMenu.Client.Pages;
 using BlazorTabsMenu.Components;
+using BlazorTabsMenu.Models;
+using BlazorTabsMenu.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddScoped<IDataDictionaryItemService<DataDictionaryItem>, DataDictionaryItemService>();
+builder.Services.AddScoped<ITopicService, TopicService>();
 
 var app = builder.Build();
 

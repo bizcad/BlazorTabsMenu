@@ -1,4 +1,8 @@
 ﻿@page "/startups"
+@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+@inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
+
 <h3>START&#45;UPS/PROD</h3>
 <form name="entryform" id="entryform" action="" method="post" onsubmit="">
     <div >
@@ -17,5 +21,14 @@
 </form>
 
 @code {
+    private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
 
+    protected override async Task OnInitializedAsync()
+    {
+        var dataDictionaryItems = await DataDictionaryService.GetAsync();
+        if (dataDictionaryItems != null)
+        {
+            this.dataDictionaryItems = dataDictionaryItems;
+        }
+    }
 }

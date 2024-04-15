@@ -87,6 +87,10 @@ div > .qno-inst {
 
 
 /*input year header*/
+.yr_over {
+    padding-left: 48px;
+    font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+}
 .yr_over_previous {
     padding-left: 48px;
     font: italic normal 400 11px/14px "Roboto condensed", sans-serif;

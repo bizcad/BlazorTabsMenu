@@ -1,4 +1,8 @@
 ﻿@page "/disclosure"
+@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+@inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
+
 <h3>DISCLOSURE</h3>
 <form name="entryform" id="entryform" action="" method="post" onsubmit="">
     <div >
@@ -16,9 +20,19 @@
             
 
         </div>
+        <div>@dataDictionaryItems.Count</div>
     </div>
 </form>
 
 @code {
+    private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
 
+    protected override async Task OnInitializedAsync()
+    {
+        var dataDictionaryItems = await DataDictionaryService.GetAsync();
+        if (dataDictionaryItems != null)
+        {
+            this.dataDictionaryItems = dataDictionaryItems;
+        }
+    }
 }
