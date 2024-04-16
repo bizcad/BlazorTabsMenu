@@ -8,22 +8,34 @@ namespace BlazorTabsMenu.Services
         private readonly DataDictionaryItemContext _context;
         public DataDictionaryItemService()
         {
-            IConfigurationRoot builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
-                .Build();
+            //string? userSecretsId = "ConnectionStrings.DockerDatabase";
+            //IConfigurationRoot config = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //    .AddUserSecrets(userSecretsId)
+            //    .Build();
 
-            string connectionString = builder["ConnectionStrings:DockerDatabase"];
+            //string? connectionString = "Data Source=localhost,11433;Initial Catalog=WIPL;User ID=sa;Password=usPjGL#d;";
 
-            _context = new DataDictionaryItemContext(connectionString);
+            //if (connectionString == null)
+            //{
+            //    throw new InvalidOperationException("Connection string not found.");
+            //}
+
+            _context = new DataDictionaryItemContext();
         }
+
+
         public DataDictionaryItemService(DataDictionaryItemContext context)
         {
             _context = context;
         }
 
+        /****************************
+        * 
         //Implement the IDataDictionaryItemService interface
+        *
+        ****************************/
         public List<Models.DataDictionaryItem> Get()
         {
             return [.. _context.DataDictionaryItem];
@@ -75,6 +87,14 @@ namespace BlazorTabsMenu.Services
         public async Task<List<DataDictionaryItem>> GetAsync()
         {
             return await _context.DataDictionaryItem.ToListAsync();
+        }
+        async Task<List<DataDictionaryItem>> IDataDictionaryItemService<DataDictionaryItem>.GetTabNumberAsync(int tabNumber)
+        {
+            //return _context.Topic.OrderBy(x => x.TabNumber).ToListAsync();
+            return await  _context.DataDictionaryItem
+                .Where(x => x.TabNumber == tabNumber)
+                .OrderBy(x => x.Sequence)
+                .ToListAsync();
         }
     }
 }

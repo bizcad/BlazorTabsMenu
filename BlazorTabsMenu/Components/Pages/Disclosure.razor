@@ -5,7 +5,7 @@
 
 <h3>DISCLOSURE</h3>
 <form name="entryform" id="entryform" action="" method="post" onsubmit="">
-    <div >
+    <div>
         <!--start spacer-->
         <div style="max-height: 30px">
             <div style='padding: 3px'><span>&nbsp;</span><br />&nbsp;</div>
@@ -14,13 +14,27 @@
             <div><span>&nbsp;</span><br />&nbsp;</div>
         </div>
         <!--end spacer-->
-        <div class="wrapper" >
-            
-            <QuestionWrapped />
-            
-
-        </div>
-        <div>@dataDictionaryItems.Count</div>
+        @if (dataDictionaryItems.Count == 0)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            @foreach (var item in dataDictionaryItems)
+            {
+                @if (item.QuestionNumber is null)
+                {
+                    continue;
+                }
+                else
+                {
+                    <div class="wrapper">
+                        <QuestionWrapped item="item" />
+                        
+                    </div>
+                }
+            }
+        }
     </div>
 </form>
 
@@ -29,10 +43,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var dataDictionaryItems = await DataDictionaryService.GetAsync();
+        var dataDictionaryItems = await DataDictionaryService.GetTabNumberAsync(3);
         if (dataDictionaryItems != null)
         {
             this.dataDictionaryItems = dataDictionaryItems;
         }
     }
+    //item.ColumnNameStatus is null || item.ColumnNameStatus.Length == 0 ||
 }

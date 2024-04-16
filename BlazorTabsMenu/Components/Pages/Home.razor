@@ -14,19 +14,18 @@ Welcome to your new app.
     <div>@topic.TopicName</div>
 }
 
+@foreach (var item in dataDictionaryItems)
+{
+    <div>@item.QuestionLabelText</div>
+}
+
 @code{
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
     private List<Topic> topics = new List<Topic>();
 
     protected override async Task OnInitializedAsync()
     {
-
-        var topics = await TopicService.GetSortedAsync();
-        if (topics != null)
-        {
-            
-            this.topics = topics;
-        }
+ 
 
 
         var dataDictionaryItems = await DataDictionaryService.GetAsync();

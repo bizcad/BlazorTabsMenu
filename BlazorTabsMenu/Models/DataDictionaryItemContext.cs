@@ -5,8 +5,9 @@ namespace BlazorTabsMenu.Models
 {
     public partial class  DataDictionaryItemContext : DbContext
     {
-        private string _connectionString;
+        private string? _connectionString;
         public string ConnectionString { get => _connectionString; set => _connectionString = value; }
+
 
         public DataDictionaryItemContext(string connectionString)
         {
@@ -15,26 +16,30 @@ namespace BlazorTabsMenu.Models
         public DataDictionaryItemContext(DbContextOptions<DataDictionaryItemContext> options)
             : base(options)
         {
-            IConfigurationRoot builder = new ConfigurationBuilder()
+            IConfigurationRoot config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
                 .Build();
 
-            _connectionString = builder["ConnectionStrings:DockerDatabase"];
+            _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
+        }
+
+        public DataDictionaryItemContext()
+        {
         }
 
         public DbSet<Models.DataDictionaryItem> DataDictionaryItem { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot builder = new ConfigurationBuilder()
+            IConfigurationRoot config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
                 .Build();
 
-            _connectionString = builder["ConnectionStrings:DockerDatabase"];
+            _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
 
             if (!optionsBuilder.IsConfigured)
             {                

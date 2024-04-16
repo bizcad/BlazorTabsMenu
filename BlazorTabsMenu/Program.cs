@@ -2,6 +2,7 @@ using BlazorTabsMenu.Client.Pages;
 using BlazorTabsMenu.Components;
 using BlazorTabsMenu.Models;
 using BlazorTabsMenu.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddScoped<IDataDictionaryItemService<DataDictionaryItem>, DataDictionaryItemService>();
 builder.Services.AddScoped<ITopicService, TopicService>();
+
+
 
 var app = builder.Build();
 

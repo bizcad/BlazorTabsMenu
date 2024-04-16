@@ -1,6 +1,13 @@
-﻿<InputPreviousYear />
-<InputCurrentYear />
+﻿@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+<InputPreviousYear item="@item"  />
+<InputCurrentYear item="@item" />
 
 @code {
+    [Parameter]
+    public DataDictionaryItem item { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
 
+    }
 }

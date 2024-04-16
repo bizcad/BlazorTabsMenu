@@ -1,11 +1,18 @@
-﻿<!--start of QuestionLabel.razor-->
+﻿@using BlazorTabsMenu.Models
+<!--start of QuestionLabel.razor-->
 <div class="question_label inst_bottom_spacer">
-    TANGIBLE PROPERTY<br />
+    @item.QuestionLabelText<br />
     <div class="question_div">
-        <span class="question_text">DISCLOSURE where TTO will protect as tangible biological material (seeds, plants, animals, microorganisms, etc.)</span>
+        <span class="question_text">@item.QuestionText</span>
     </div>
 </div>
 
 @code {
+    [Parameter]
+    public DataDictionaryItem item { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
 
 }

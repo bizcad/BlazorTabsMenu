@@ -19,26 +19,26 @@ public partial class TopicContext : DbContext
     public TopicContext(DbContextOptions<TopicContext> options)
         : base(options)
     {
-        IConfigurationRoot builder = new ConfigurationBuilder()
+        IConfigurationRoot config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
             .Build();
 
-        _connectionString = builder["ConnectionStrings:DockerDatabase"];
+        _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
     }
 
     public virtual DbSet<Topic> Topic { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        IConfigurationRoot builder = new ConfigurationBuilder()
+        IConfigurationRoot config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
             .Build();
 
-        _connectionString = builder["ConnectionStrings:DockerDatabase"];
+        _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
 
         if (!optionsBuilder.IsConfigured)
         {

@@ -1,11 +1,29 @@
-﻿
+﻿@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
 
-    <QuestionNumber />
-    <QuestionLabel />
-    <InputTwoYearNumbers />
+@inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
+
+@if(item != null)
+{
+    
+            <QuestionNumber item="@item" />
+            <QuestionLabel item="@item" />
+            <InputTwoYearNumbers item="@item" />
+    
+}
+@* <QuestionNumber />
+<QuestionLabel />
+<InputTwoYearNumbers /> *@
 
 
 
 @code {
 
+    [Parameter]
+    public DataDictionaryItem item { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
 }

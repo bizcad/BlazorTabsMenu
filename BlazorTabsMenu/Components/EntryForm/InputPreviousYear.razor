@@ -1,20 +1,34 @@
-﻿<div>
-    <label for="PatDis_previous" class="yr_over">2018</label><br />
+﻿@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+
+<div>
+    <label for="@inputid" class="yr_over_previous">@item.Answer2018</label><br />
     <div class="input-group">
-        <div>&nbsp;</div>
-        <div class="input-group-area-previous">
+        
+        <div class="input-group-area-current">
             <input type="text"
-                   id="PatDis_previous"
-                   name="PatDis_previous"
+                   id="@inputid"
+                   name="@inputname"
                    value=""
                    class="input-unvisited"
                    size="10">
         </div>
-
     </div>
 </div>
 
 @code {
-    
-    
+
+    [Parameter]
+    public DataDictionaryItem item { get; set; }
+
+    string inputid = string.Empty;
+    string inputname = string.Empty;
+    string inputvalue = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        inputid = item.ColumnName + "_previous";
+        inputname = item.ColumnName + "_previous";
+
+    }
 }
