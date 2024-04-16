@@ -1,11 +1,15 @@
-﻿@page "/startups"
+﻿@page "/startups/{tabnumb}"
+<h3>@topic.TopicHeader</h3>
+
 @using BlazorTabsMenu.Models
 @using BlazorTabsMenu.Services
+@using System.Text
 @inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
+@inject ITopicService TopicService
 
-<h3>START&#45;UPS/PROD</h3>
+
 <form name="entryform" id="entryform" action="" method="post" onsubmit="">
-    <div >
+    <div>
         <!--start spacer-->
         <div style="max-height: 30px">
             <div style='padding: 3px'><span>&nbsp;</span><br />&nbsp;</div>
@@ -14,18 +18,47 @@
             <div><span>&nbsp;</span><br />&nbsp;</div>
         </div>
         <!--end spacer-->
-        <div class="wrapper">
-            <QuestionWrapped />
-        </div>
+        @if (dataDictionaryItems.Count == 0)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            @foreach (var item in dataDictionaryItems)
+            {
+                @if (item.QuestionNumber is null)
+                {
+                    <InputHidden item="item" />
+
+                }
+                else
+                {
+                    <div class="wrapper">
+                        <QuestionWrapped item="item" />
+                    </div>
+                }
+            }
+        }
     </div>
 </form>
 
 @code {
+    [Parameter]
+    public string tabnumb { get; set; }
+    private int tabnumber = 0;
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
+    private Topic topic = new();
 
     protected override async Task OnInitializedAsync()
     {
-        var dataDictionaryItems = await DataDictionaryService.GetAsync();
+        tabnumber = Convert.ToInt32(tabnumb);
+        topic = await TopicService.GetSurveyTopicAsync(tabnumber);
+        if (topic == null)
+        {
+            throw new NullReferenceException("Topic is null");
+        }
+
+        var dataDictionaryItems = await DataDictionaryService.GetTabNumberAsync(tabnumber);
         if (dataDictionaryItems != null)
         {
             this.dataDictionaryItems = dataDictionaryItems;

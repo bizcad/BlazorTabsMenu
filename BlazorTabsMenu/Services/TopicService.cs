@@ -132,5 +132,11 @@ namespace BlazorTabsMenu.Services
 
             return topics;
         }
+        async Task<Topic?> ITopicService.GetSurveyTopicAsync(int topicnumber)
+        {
+            return await _context.Topic
+                .Where(t => t.TabNumber == topicnumber).FirstOrDefaultAsync();
+
+        }
     }
 }

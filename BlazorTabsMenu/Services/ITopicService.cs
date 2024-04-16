@@ -8,6 +8,7 @@ namespace BlazorTabsMenu.Services
         Task<List<Topic>> GetSortedAsync();
         Task<Topic> GetTabNumberAsync(int tabnumber);
         Task<List<Topic>> GetSurveyTopicsAsync();
+        Task<Topic> GetSurveyTopicAsync(int topicnumber);
 
 
     }

@@ -1,10 +1,11 @@
 ﻿@page "/income/{tabnumb}"
-<h3>INCOME/FEES</h3>
+<h3>@topic.TopicHeader</h3>
 
 @using BlazorTabsMenu.Models
 @using BlazorTabsMenu.Services
 @using System.Text
 @inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
+@inject ITopicService TopicService
 
 
 <form name="entryform" id="entryform" action="" method="post" onsubmit="">
@@ -46,15 +47,21 @@
     public string tabnumb { get; set; }
     private int tabnumber = 0;
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
+    private Topic topic = new();
 
     protected override async Task OnInitializedAsync()
     {
         tabnumber = Convert.ToInt32(tabnumb);
+        topic = await TopicService.GetSurveyTopicAsync(tabnumber);
+        if(topic == null)
+        {
+            throw new NullReferenceException("Topic is null");
+        }
+
         var dataDictionaryItems = await DataDictionaryService.GetTabNumberAsync(tabnumber);
         if (dataDictionaryItems != null)
         {
             this.dataDictionaryItems = dataDictionaryItems;
         }
-    }
-    //item.ColumnNameStatus is null || item.ColumnNameStatus.Length == 0 ||
+    }    
 }
