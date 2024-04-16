@@ -29,7 +29,6 @@
                 @if (item.QuestionNumber is null)
                 {
                     <InputHidden item="item" />
-
                 }
                 else
                 {
@@ -44,14 +43,14 @@
 
 @code {
     [Parameter]
-    public string tabnumb { get; set; }
+    public string? tabnumb { get; set; }
     private int tabnumber = 0;
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
     private Topic topic = new();
 
     protected override async Task OnInitializedAsync()
     {
-        tabnumber = Convert.ToInt32(tabnumb);
+        tabnumber = Convert.ToInt32(tabnumb);        
         topic = await TopicService.GetSurveyTopicAsync(tabnumber);
         if (topic == null)
         {

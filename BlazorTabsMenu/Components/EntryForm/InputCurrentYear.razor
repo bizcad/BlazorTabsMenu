@@ -17,18 +17,26 @@
 </div>
 
 @code {
-
     [Parameter]
-    public DataDictionaryItem item { get; set; }
+    public DataDictionaryItem? item { get; set; }
 
-    string inputid = string.Empty;
-    string inputname = string.Empty;
-    string inputvalue = string.Empty;
+    string? inputid = string.Empty;
+    string? inputname = string.Empty;
+    string? inputvalue = string.Empty;
 
-    protected override async Task OnInitializedAsync()
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     inputid = item.ColumnName + "_current";
+    //     inputname = item.ColumnName + "_current";
+
+    // }
+    protected override void OnInitialized()
     {
+        if(item == null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
         inputid = item.ColumnName + "_current";
         inputname = item.ColumnName + "_current";
-
     }
 }

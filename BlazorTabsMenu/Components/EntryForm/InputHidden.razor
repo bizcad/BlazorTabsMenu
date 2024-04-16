@@ -7,16 +7,20 @@
 @code {
 
     [Parameter]
-    public DataDictionaryItem item { get; set; }
-
+    public DataDictionaryItem? item { get; set; }
     string inputid = string.Empty;
     string inputname = string.Empty;
     string inputvalue = string.Empty;
 
-    protected override async Task OnInitializedAsync()
-    {
-        inputid = item.ColumnName + "_previous";
-        inputname = item.ColumnName + "_previous";
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     inputid = item.ColumnName + "_current";
+    //     inputname = item.ColumnName + "_current";
 
+    // }
+    protected override void OnInitialized()
+    {
+        inputid = item.ColumnName + "_current";
+        inputname = item.ColumnName + "_current";
     }
 }

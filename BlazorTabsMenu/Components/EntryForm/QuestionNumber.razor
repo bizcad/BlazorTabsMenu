@@ -5,8 +5,14 @@
 
 @code {
     [Parameter]
-    public DataDictionaryItem item { get; set; }
-    protected override async Task OnInitializedAsync()
+    public DataDictionaryItem? item { get; set; }
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     inputid = item.ColumnName + "_current";
+    //     inputname = item.ColumnName + "_current";
+
+    // }
+    protected override void OnInitialized()
     {
 
     }

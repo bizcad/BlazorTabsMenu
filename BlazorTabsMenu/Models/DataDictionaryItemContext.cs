@@ -3,7 +3,7 @@
 
 namespace BlazorTabsMenu.Models
 {
-    public partial class  DataDictionaryItemContext : DbContext
+    public partial class DataDictionaryItemContext : DbContext
     {
         //private string? _connectionString;
         //public string ConnectionString { get => _connectionString; set => _connectionString = value; }
@@ -13,6 +13,7 @@ namespace BlazorTabsMenu.Models
         //{
         //    _connectionString = connectionString;
         //}
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public DataDictionaryItemContext(DbContextOptions<DataDictionaryItemContext> options)
             : base(options)
         {
@@ -28,6 +29,7 @@ namespace BlazorTabsMenu.Models
         public DataDictionaryItemContext()
         {
         }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         public DbSet<Models.DataDictionaryItem> DataDictionaryItem { get; set; }
 
@@ -42,8 +44,8 @@ namespace BlazorTabsMenu.Models
             string _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
 
             if (!optionsBuilder.IsConfigured)
-            {                
-                optionsBuilder.UseSqlServer(_connectionString);                
+            {
+                optionsBuilder.UseSqlServer(_connectionString);
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

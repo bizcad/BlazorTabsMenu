@@ -116,7 +116,7 @@ namespace BlazorTabsMenu.Services
             return _context.Topic.OrderBy(x => x.TabNumber).ToListAsync();
         }
 
-        Task<Topic> ITopicService.GetTabNumberAsync(int tabnumber)
+        Task<Topic?> ITopicService.GetTabNumberAsync(int tabnumber)
         {
             return _context.Topic.Where(x => x.TabNumber == tabnumber).FirstOrDefaultAsync();
 
