@@ -9,38 +9,39 @@ namespace BlazorTabsMenu.Services
         private readonly TopicContext _context;
         public TopicService()
         {
-            IConfigurationRoot builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
-                .Build();
-
-            string connectionString = builder["ConnectionStrings:DockerDatabase"];
-
-            _context = new TopicContext(connectionString);
-        }
-        public TopicService(TopicContext context)
-        {
-            _context = context;
-        }   
-        public TopicService(string? connectionString)
-        {
-            _ = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
-                .Build();
+            //IConfigurationRoot builder = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //    .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
+            //    .Build();
 
             //string connectionString = builder["ConnectionStrings:DockerDatabase"];
-            if(string.IsNullOrEmpty(connectionString))
-            {
-                throw new Exception("No connection string found in appsettings.json or user secrets");
-            }
-            else
-            {               
-                _context = new TopicContext(connectionString);
-            }
+
+            //_context = new TopicContext(connectionString);
+            _context = new TopicContext();
         }
+        //public TopicService(TopicContext context)
+        //{
+        //    _context = context;
+        //}   
+        //public TopicService(string? connectionString)
+        //{
+        //    _ = new ConfigurationBuilder()
+        //        .SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        //        .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
+        //        .Build();
+
+        //    //string connectionString = builder["ConnectionStrings:DockerDatabase"];
+        //    if(string.IsNullOrEmpty(connectionString))
+        //    {
+        //        throw new Exception("No connection string found in appsettings.json or user secrets");
+        //    }
+        //    else
+        //    {               
+        //        _context = new TopicContext(connectionString);
+        //    }
+        //}
 
 
         //Implement the IWiplService interface

@@ -3,12 +3,19 @@
 @using BlazorTabsMenu.Services
 @inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
 @inject ITopicService TopicService
+@inject ICountryService CountryService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div><h3>Countries</h3></div>
+@foreach (var country in countries)
+{
+    <div>@country.CountryName</div>
+}
+
+<div><h3>Topics</h3></div>
 @foreach(var topic in topics)
 {
     <div>@topic.TopicName</div>
@@ -22,16 +29,28 @@ Welcome to your new app.
 @code{
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
     private List<Topic> topics = new List<Topic>();
+    private List<Country> countries = new List<Country>();
 
     protected override async Task OnInitializedAsync()
     {
  
-
-
-        var dataDictionaryItems = await DataDictionaryService.GetAsync();
-        if (dataDictionaryItems != null)
+        var topics = await TopicService.GetAsync();
+        if (topics != null)
         {
-            this.dataDictionaryItems = dataDictionaryItems;
-        }        
+            this.topics = topics;
+        }
+
+        var countries = await CountryService.GetAsync();
+        if (countries != null)
+        {
+            this.countries = countries;
+        }
+
+
+        // var dataDictionaryItems = await DataDictionaryService.GetAsync();
+        // if (dataDictionaryItems != null)
+        // {
+        //     this.dataDictionaryItems = dataDictionaryItems;
+        // }        
     }
 }

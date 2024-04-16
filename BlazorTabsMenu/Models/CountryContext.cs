@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorTabsMenu.Models;
 
-public partial class TopicContext : DbContext
+public partial class CountryContext : DbContext
 {
-    public TopicContext(DbContextOptions<TopicContext> options)
+    public CountryContext(DbContextOptions<CountryContext> options)
         : base(options)
     {
     }
 
-    public TopicContext()
+    public CountryContext()
     {
     }
 
-    public virtual DbSet<Topic> Topic { get; set; }
+    public virtual DbSet<Country> Country { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -38,7 +38,7 @@ public partial class TopicContext : DbContext
     {
 
 
-        modelBuilder.Entity<Topic>(entity =>
+        modelBuilder.Entity<Country>(entity =>
         {
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
         });

@@ -15,6 +15,10 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[Country]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[DataDictionaryItem]",
          "ObjectType": 0
       },

@@ -1,28 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BlazorTabsMenu.Models;
+
 
 namespace BlazorTabsMenu.Models
 {
     public partial class  DataDictionaryItemContext : DbContext
     {
-        private string? _connectionString;
-        public string ConnectionString { get => _connectionString; set => _connectionString = value; }
+        //private string? _connectionString;
+        //public string ConnectionString { get => _connectionString; set => _connectionString = value; }
 
 
-        public DataDictionaryItemContext(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        //public DataDictionaryItemContext(string connectionString)
+        //{
+        //    _connectionString = connectionString;
+        //}
         public DataDictionaryItemContext(DbContextOptions<DataDictionaryItemContext> options)
             : base(options)
         {
-            IConfigurationRoot config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
-                .Build();
+            //IConfigurationRoot config = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //    .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
+            //    .Build();
 
-            _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
+            //_connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
         }
 
         public DataDictionaryItemContext()
@@ -39,7 +39,7 @@ namespace BlazorTabsMenu.Models
                 .AddUserSecrets("363d298d-ad40-47c2-85f4-10af1688f7dc")
                 .Build();
 
-            _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
+            string _connectionString = config["ConnectionStrings:DockerDatabase"] ?? throw new InvalidOperationException("Connection string not found.");
 
             if (!optionsBuilder.IsConfigured)
             {                
