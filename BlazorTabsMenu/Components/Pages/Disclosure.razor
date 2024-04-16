@@ -1,6 +1,7 @@
-﻿@page "/disclosure"
+﻿@page "/disclosure/{tabnumb}"
 @using BlazorTabsMenu.Models
 @using BlazorTabsMenu.Services
+@using System.Text
 @inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
 
 <h3>DISCLOSURE</h3>
@@ -24,13 +25,13 @@
             {
                 @if (item.QuestionNumber is null)
                 {
-                    continue;
+                    <InputHidden item="item" />
+                    
                 }
                 else
-                {
+                {   
                     <div class="wrapper">
-                        <QuestionWrapped item="item" />
-                        
+                        <QuestionWrapped item="item" />                        
                     </div>
                 }
             }
@@ -39,11 +40,15 @@
 </form>
 
 @code {
+    [Parameter]
+    public string tabnumb { get; set; }
+    private int tabnumber = 0;
     private List<DataDictionaryItem> dataDictionaryItems = new List<DataDictionaryItem>();
 
     protected override async Task OnInitializedAsync()
     {
-        var dataDictionaryItems = await DataDictionaryService.GetTabNumberAsync(3);
+        tabnumber = Convert.ToInt32(tabnumb);
+        var dataDictionaryItems = await DataDictionaryService.GetTabNumberAsync(tabnumber);
         if (dataDictionaryItems != null)
         {
             this.dataDictionaryItems = dataDictionaryItems;

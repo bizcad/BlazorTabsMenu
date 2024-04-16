@@ -1,0 +1,22 @@
+﻿@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+
+
+<input type="hidden" id="@inputid" name="@inputname" value="" />
+
+@code {
+
+    [Parameter]
+    public DataDictionaryItem item { get; set; }
+
+    string inputid = string.Empty;
+    string inputname = string.Empty;
+    string inputvalue = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        inputid = item.ColumnName + "_previous";
+        inputname = item.ColumnName + "_previous";
+
+    }
+}

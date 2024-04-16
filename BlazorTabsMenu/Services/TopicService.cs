@@ -92,11 +92,13 @@ namespace BlazorTabsMenu.Services
         {
             _context.SaveChanges();
         }
-        public void DeleteAll() {
+        public void DeleteAll()
+        {
             _context.Topic.RemoveRange(_context.Topic);
             _context.SaveChanges();
         }
-        public void Delete(Guid id) {
+        public void Delete(Guid id)
+        {
             var row = _context.Topic.Find(id);
             if (row != null)
             {
@@ -117,7 +119,18 @@ namespace BlazorTabsMenu.Services
         Task<Topic> ITopicService.GetTabNumberAsync(int tabnumber)
         {
             return _context.Topic.Where(x => x.TabNumber == tabnumber).FirstOrDefaultAsync();
-            
+
+        }
+
+        async Task<List<Topic>> ITopicService.GetSurveyTopicsAsync()
+        {
+
+            var topics = await _context.Topic
+                .Where(t => t.TabNumber > 0 && t.TabNumber < 7)
+                .OrderBy(t => t.TabNumber)
+                .ToListAsync();
+
+            return topics;
         }
     }
 }

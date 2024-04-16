@@ -1,4 +1,5 @@
 ﻿using BlazorTabsMenu.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorTabsMenu.Services
 {
@@ -6,6 +7,7 @@ namespace BlazorTabsMenu.Services
     {
         Task<List<Topic>> GetSortedAsync();
         Task<Topic> GetTabNumberAsync(int tabnumber);
+        Task<List<Topic>> GetSurveyTopicsAsync();
 
 
     }

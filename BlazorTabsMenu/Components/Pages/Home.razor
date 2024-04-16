@@ -34,7 +34,7 @@
     protected override async Task OnInitializedAsync()
     {
  
-        var topics = await TopicService.GetAsync();
+        var topics = await TopicService.GetSurveyTopicsAsync();
         if (topics != null)
         {
             this.topics = topics;
