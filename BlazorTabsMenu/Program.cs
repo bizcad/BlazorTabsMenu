@@ -14,6 +14,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddScoped<IDataDictionaryItemService<DataDictionaryItem>, DataDictionaryItemService>();
 builder.Services.AddScoped<ITopicService, TopicService>();
 builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<IInformationSchemaColumnService, InformationSchemaColumnService>();
 
 
 

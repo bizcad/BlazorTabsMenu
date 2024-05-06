@@ -1,0 +1,42 @@
+﻿@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+
+
+<input type="hidden" id="@inputid_current" name="@inputname_current" value="" />
+<input type="hidden" id="@inputid_previous" name="@inputname_previous" value="" />
+<div>
+    <label for="@inputid_current" class="yr_over">None</label><br />
+    <div class="input-group">
+
+        <div class="input-group-area-current">
+            <span id="@inputid_current" class="question_label inst_bottom_spacer" >DataPlaceholder</span>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public DataDictionaryItem? item { get; set; }
+    string? inputid_current = string.Empty;
+    string? inputname_current = string.Empty;
+    string? inputvalue_current = string.Empty;
+    string? inputid_previous = string.Empty;
+    string? inputname_previous = string.Empty;
+    string? inputvalue_previous = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        if (item == null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
+        else
+        {
+            inputid_current = item.ColumnName + "_current";
+            inputname_current = item.ColumnName + "_current";
+            inputid_previous = item.ColumnName + "_previous";
+            inputname_previous = item.ColumnName + "_previous";
+        }
+    }
+
+}

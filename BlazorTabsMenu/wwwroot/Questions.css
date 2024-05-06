@@ -30,7 +30,7 @@
     border: none;
     border-color: aquamarine;
 }
-
+/*number question wrapper*/
 .wrapper {
     display: grid;
     margin: -2px 5px 20px 5px;
@@ -38,7 +38,28 @@
     height: auto;
     grid-template-columns: .75fr 4fr 1.5fr 2fr;
     grid-gap: 1em;
-    grid-auto-rows: minmax(15px, auto);
+    /*grid-auto-rows: minmax(15px, auto);*/
+    justify-items: normal;
+    background-color: var(--wrapper-tab1-background);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+    .wrapper > div {
+        padding: 5px 0px 0px;
+        align-self: start;
+        text-align: left;
+    }
+
+.institution {
+    display: grid;
+    margin: -2px 5px 20px 5px;
+    padding-top: 1.5em;
+    height: auto;
+    grid-template-columns: .2fr 1fr 1fr .2fr;
+    grid-gap: 1em;
+    /*grid-auto-rows: minmax(15px, auto);*/
     justify-items: normal;
     background-color: var(--wrapper-tab1-background);
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -47,11 +68,14 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-    .wrapper > div {
+    .institution > div {
         padding: 5px 0px 0px;
         align-self: start;
         text-align: left;
     }
+
+
+
 /*for help text*/
 .div > span {
     font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
@@ -88,8 +112,8 @@ div > .qno-inst {
 
 /*input year header*/
 .yr_over {
-    padding-left: 48px;
     font: italic normal 400 11px/14px "Roboto condensed", sans-serif;
+
 }
 .yr_over_previous {
     padding-left: 48px;
@@ -124,7 +148,8 @@ div > .qno-inst {
 
 .input-group-area-current {
     width: 100%;
-    padding-right: 55px;
+    /*margin-right:15px;*/
+    /*padding-right: 55px;*/
 }
 
 .input-unvisited {

@@ -1,4 +1,11 @@
-/* MainLayout styles */
+/* SurveyLayout styles */
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 1080px;
+}
+/*
 .app-layout-page {
     position: relative;
     display: flex;
@@ -10,7 +17,7 @@
     border: solid navy;
     box-sizing: content-box;
     margin: 0 auto;
-}
+}*/
 
 main {
     flex: 1;

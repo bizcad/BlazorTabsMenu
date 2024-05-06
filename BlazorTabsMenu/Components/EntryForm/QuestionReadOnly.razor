@@ -3,13 +3,13 @@
 
 @inject IDataDictionaryItemService<DataDictionaryItem> DataDictionaryService
 
-@if(item != null)
+@if (item != null)
 {
-    
-            <QuestionNumber item="@item" />
-            <QuestionLabel item="@item" />
-            <InputTwoYearNumbers item="@item" />
-    
+
+    <QuestionNumber item="@item" />
+    <QuestionLabel item="@item" />
+    <InputReadOnly item="@item" />
+
 }
 
 @code {

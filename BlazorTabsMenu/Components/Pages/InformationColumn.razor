@@ -1,0 +1,22 @@
+﻿@page "/informationcolumns"
+@using BlazorTabsMenu.Models
+@using BlazorTabsMenu.Services
+@using System.Text
+@inject IInformationSchemaColumnService ICService
+
+
+<h3>InformationColumn</h3>
+
+@code {
+    private List<InformationSchemaColumn> informationSchemaColumns = new List<InformationSchemaColumn>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        informationSchemaColumns = await ICService.GetAsync();
+        if (informationSchemaColumns == null)
+        {
+            throw new NullReferenceException("InformationSchemaColumns is null");
+        }
+    }
+
+}
